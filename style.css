@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap');
+
+/* CSS RESET */
+
+*::before,*::after,* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-size: inherit;
+}
+
+input, button {
+    font-size: inherit;
+    font-family: inherit;
+}
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* CSS Variables */
+:root {
+
+    --primary-gradient1: hsl(249, 99%, 64%);
+    --primary-gradient2: hsl(278, 94%, 30%);
+    --red: hsl(0, 100%, 66%);
+    --white: hsl(0, 0%, 100%);
+    --light-violet: hsl(270, 3%, 87%);
+    --dark-violet: hsl(279, 6%, 55%);
+    --darker-violet: hsl(278, 68%, 11%);
+
+}
+
+body {
+    min-height: 100vh;
+    line-height:1.5;
+    text-rendering: optimizeSpeed;
+    background-image: url(images/bg-main-mobile.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 13.5rem;
+}
+
+img, picture, figure {
+    max-width: 100%;
+    display: block;
+}
+
+/* Mobile First Style */
+main {
+    display: grid;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.cards {
+    height: 15rem;
+    max-width: 100%;
+    position: relative;
+}
+
+.frontcard {
+    width: clamp(275px, 50%, 350px);
+    position: absolute;
+    border-radius: 0.5rem;
+    left: 0;
+    bottom: 0;
+
+    z-index: 3;
+}
+
+.backcard {
+    width: clamp(275px, 50%, 350px);
+    position: absolute;
+    border-radius: 0.5rem;
+    right: 0;
+    top: 0;
+}
+
+.frontcard > *:not(.front-card-bg),
+.backcard > *:not(.back-card-bg) {
+    position: absolute;
+}
+
+.front-card-logo {
+    width: 3rem;
+    top: 1rem;
+    left: 1rem;
+}
+
+.front-card-number {
+    top: 50%;
+    left: 1rem;
+    font-size: 1.385rem;
+    color: var(--white);
+}
+
+.front-card-name {
+    color: var(--white);
+    left: 1rem;
+    bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 0.55rem;
+}
+
+.front-card-expiry {
+    color: var(--white);
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 0.55rem;
+}
+
+.back-card-cvc {
+    color: var(--white);
+    top: 44%;
+    right: 2rem;
+    font-size: 0.65rem;
+}
+
+/* Form */
+
+.form-container {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.field {
+    margin-bottom: 0.5rem;
+}
+
+.input-field {
+    max-width: 100%;
+}
+
+.input-field label {
+    font-size: 0.8;
+}
+.input-field input {
+    width: 100%;
+    height: 45px;
+
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--light-violet);
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+}
+
+/* Input Focus */
+.input-field input:focus,
+.input-field input:focus-within {
+    outline: 1px solid var(--primary-gradient1);
+}
+
+/* Invalid  */
+.field .error {
+    color: var(--red);
+    font-size: 0.75rem;
+    display: none;
+}
+
+.invalid .error {
+    display: block;
+}
+
+.invalid input {
+    outline: 1px solid var(--red);
+}
+/* Invalid End */
+
+
+.expDateAndCVC {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.expDate > .input-field > *:not(label) {
+    display: inline;
+}
+
+.expDate > .input-field > input {
+    width: 48%;
+}
+
+button {
+    width: 100%;
+    height: 45px;
+
+    font-size: 1rem;
+    color: var(--white);
+    padding: 0.5rem;
+    background-color: var(--darker-violet);
+    border-radius: 0.25rem;
+    margin: 0.5rem 0;
+
+    outline-color: transparent;
+    border-color: transparent;
+    margin-bottom: 3rem;
+
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+button:hover {
+    background-color: var(--dark-violet);
+}
+
+/* Thankyou State */
+.thankyou {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+}
+
+.thankyou > img {
+    margin-bottom: 1rem;
+}
+
+.thankyou > h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.thankyou > p {
+    font-weight: 300;
+    color: var(--dark-violet);
+    margin-bottom: 1.5rem;
+}
+
+/* Footer */
+.attribution {
+    text-align: center;
+}
+
+/* Tablet Size */
+@media (min-width: 760px) {
+    body {
+        display: grid;
+        place-items: center;
+
+        background-image: url(images/bg-main-desktop.png);
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: 25% 100%;
+    }
+
+    main {
+        padding: 3rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5rem;
+    }
+
+    .cards {
+        height: 22.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .frontcard {
+        position: relative;
+        width: clamp(300px, 100%, 350px);
+
+    }
+    
+    .backcard {
+        position: relative;
+        width: clamp(300px, 100%, 350px);
+        margin-left: 3rem;
+    }
+
+}
